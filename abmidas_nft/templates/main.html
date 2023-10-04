@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% csrf_token %}
+    {% load static %} 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArbmidasNFT - The NFT collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    
+    <meta name="description" content="Arbmidas NFT Collection: Discover unique NFTs and explore the future of digital artistry.">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+
+    <!-- other head elements -->
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <span class="loader">
+            Loading
+            <span class="loader-inner"></span>
+        </span>
+    </div>
+    
+    
+<header>
+    <video autoplay muted loop id="myVideo">
+        <source src="{% static 'img/movies.mp4' %}" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <nav>
+            <a href="/" class="brand">
+                <img src="{% static 'img/d9d69b4075b42cf2525a69162331702d.avif' %}" alt="DA Logo" class="brand-logo">
+                
+                <span class="brand-name">ArbmidasNFT</span>
+            </a>
+            
+            
+            <ul class="menu">
+                <li><a href="#our-colection">Our Collections</a></li>
+                <li><a href="https://opensea.io/ARBMIDASNFT">Buy NFT</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>   
+                <li><a href="{% url 'staking' %}">Staking</a></li>   
+                <li id="walletAddressLi" style="display: none;"><a href="#" id="walletAddressLink"></a></li>
+                <li><a href="#" id="connectWalletBtn1" class="btn btn-primary" onclick="connect();">Connect Wallet</a></li>
+            </ul>
+            
+            
+            <a href="#" id="connectWalletBtn2" class="btn btn-primary" onclick="connect();">Connect Wallet</a>
+            
+            <button class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <div class="header-body">
+            <div>
+                <div>
+                    <p>
+                        Are you a collector of NFT and you are looking for an unique NFT collection?
+                    </p>
+                    <span class="bar"></span>
+                    <h1>Discover</h1>
+                </div>
+                <div>
+                    <h1>our NFTs</h1>
+                    <span class="bar"></span>
+                    <p>
+                        NFTs can represent digital or real-world items like artwork and real estate.
+                    </p>                
+                </div>
+                <div class="btn-group">
+                    <a href="{% url 'image-gallery' %}" class="btn btn-primary">NFT 3D Gallery</a>
+                    <a href="https://arbmidas.com/" class="btn btn-secondary">Our token</a>
+                </div>
+            </div>
+        </div>
+        <!-- <img src="{% static 'img/grid1-top.png' %}" class="grid-img"/> -->
+        
+    </div>
+</header>
+
+<div class="container">
+    <!-- <img src="{% static 'img/grid1-bottom.png' %}" class="grid-img"/> -->
+    <section class="services">
+        <div class="heading">
+            <h2>Want to learn more about our NFTs?</h2>
+            <p>Arbmidas NFTs are revolutionizing the art and collector's realm. Each piece embodies unique artistry, carrying a tale of its own. Every unit in this collection resonates with creativity and value. Dive into the world of Arbmidas and experience the future of digital artistry.
+            </p>
+        </div>
+
+
+        <div class="cards">
+            <h2>How to get our NFTs?</h2>
+
+            <div class="card">
+                <div class="light"></div>
+                    <img src="{% static 'img/wallet.png' %}" alt="wallet">
+                    <h3>1) Set up your wallet</h3>
+                    <p>
+                        To purchase our NFTs, one must set up a <a class="here" href="https://metamask.io/">MetaMask</a> wallet.
+                    </p>
+            </div>
+                <div class="card">
+                    <div class="light"></div>
+                        <img src="{% static 'img/camera.png' %}" alt="camera"/>
+                        <h3>2) Choose the collection</h3>
+                        <p>
+                            Choose your favorite one and Buy our NFTs<a class="here" href="https://opensea.io/ARBMIDASNFT"> Here</a>
+                        </p>
+                </div>
+                <div class="card">
+                    <div class="light"></div>
+                        <img src="{% static 'img/gift.png' %}" alt="gift"/>
+                        <h3>3) Enjoy your new NFT!</h3>
+                        <p>
+                            NFT's ate transforming the way commerce is transacted
+                        </p>
+                </div>
+            </div>
+        </div>
+        <div class="video-button-container">
+            <div class="video-container">
+                <video controls autoplay muted loop>
+                    <source src="{% static "img/gallery.mp4" %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <a href="{% url 'image-gallery' %}" class="neon-btn">Go to 3D Gallery</a>
+
+        </div>
+    </section>
+
+
+    <section class="explore">
+        <div class="grid">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    
+        <div class="content-container"> <!-- This is the new container to keep the video and text side by side -->
+    
+            <div class="text-content">
+                <h2>Explore our top art works in 3D!</h2>
+                <p>NFTs are revolutionizing how trade is conducted, agreements are upheld, assets are retained, and worth is exchanged. Just as every leaf in a forest contributes to value creation and value is exchanged through mutual reciprocity, we invite you to explore the world of ArbmidasNFT's in our immersive 3D gallery collection.</p>
+                <div class="stats">
+                    <div>
+                        <small>Number of collections</small>
+                        <h3>13x</h3>
+                        <p>NFTs changed the world!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+<section class="artists" id="about-us">
+    <div class="heading">
+        <h2>Our Team</h2>
+        <p>ARBMIDAS is a crypto project company with a group of people with a great mind as the founders. ARBMIDAS company is registered with Corporate Affairs Commission of one of the Africa’s country (Nigeria) with registration number [awaiting update]. ARBMIDAS’s Head Office is located at [awaiting update] Ibadan (Oyo state).    
+        </p>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <img src="{% static "img/J4o.gif" %}" class="bg-img"/>
+            <img src="{% static "img/gbrodowski_480x300.png" %}" class="profile-img"/>
+            <h3>Grzegorz Brodowski</h3>
+            <p>
+                Founder & CEO
+            </p>
+
+            <a href="https://www.linkedin.com/in/grzegorz-brodowski-a03b6b275/" class="card-btn">
+                See Profile
+            </a>
+            
+        </div>
+        <div class="card">
+            <img src="{% static "img/1kc1.gif" %}" class="bg-img"/>
+            <img src="{% static "img/rgorniak_480x300_b.png" %}" class="profile-img"/>
+            <h3>Rafał Górniak</h3>
+            <p>
+                Co-Funder
+            </p>
+            <a href="https://www.linkedin.com/in/rafa%C5%82-g%C3%B3rniak-b3223b276/" class="card-btn">
+                See Profile
+            </a>
+        </div>
+        <div class="card">
+            <img src="{% static "img/J59.gif" %}" class="bg-img"/>
+            <img src="{% static "img/oaadebisi_480x300_c.png" %}"class="profile-img"/>
+            <h3>Oluwatobiloba Adebisi</h3>
+            <p>
+                Community Manager
+            </p>
+            <a href="https://www.linkedin.com/in/oluwatobiloba-adeola-adebisi-937023147/" class="card-btn">
+                See Profile
+            </a>
+        </div>
+    </div>
+    </section>
+
+    <section class="trial">
+        <h2>
+            Check the entire collection.
+        </h2>
+        <p>
+            NFT's are transforming the way commerce is transacted, contracts are enforced, investments are held, and value is transferred. Every tree in the forest knows about creating value and value is transferred every tout reciprocity.
+        </p>
+        <a href="https://opensea.io/ARBMIDASNFT" class="btn btn-fire">
+            <span>Go to OpenSea</span>
+            <div class="flames">
+                <div class="flame"></div>
+                <div class="flame"></div>
+                <div class="flame"></div>
+            </div>
+        </a>
+    </section>
+    
+    
+
+<div class="container">
+    <footer>
+        <div>
+            <img src="{% static "img/d9d69b4075b42cf2525a69162331702d.avif" %}" alt="DA Logo" class="arbmidas-logo">
+            <div>
+                <h2>ArbmidasNFT</h2>
+                <p>We want to NFT the world.</p>
+                <hr />
+            </div>
+
+        </div>
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <a href="{% url 'image-gallery' %}">Go to 3D Gallery</a>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#our-colection">Our Collection</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="https://arbmidas.com/">Our Token</a></li>
+                <li><a href="/my-nfts">My NFTs</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Social Media</h3>
+            <ul>
+                <li>
+                    <a href="https://medium.com/@arbmidas">
+                        <i class="fab fa-medium"></i> Medium
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com/@arbmidasceo">
+                        <i class="fab fa-tiktok"></i> Tik Tok
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/grzegorz-brodowski-a03b6b275/">
+                        <i class="fab fa-linkedin-in"></i> Linkedin
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/ArbmidasToken" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://t.me/+GraNL1DJIkg0ZDg0" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-telegram-plane"></i> Telegram
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+    </footer>
+</div>
+
+<script src="{% static "js/script.js" %}"></script>
+
+<script>
+    window.addEventListener("load", function () {
+        const loader = document.querySelector(".loader-wrapper");
+        loader.className += " hidden"; // add "hidden" class to ".loader-wrapper"
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+<script>
+    async function connect() {
+        if (window.ethereum) {
+            await window.ethereum.request({ method: "eth_requestAccounts" });
+            window.web3 = new Web3(window.ethereum);
+            const accounts = await web3.eth.getAccounts();
+            if (accounts.length > 0) {
+                const walletAddress = accounts[0];
+                updateUIWithWallet(walletAddress);
+
+                fetch('/connect-wallet/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                    body: `address=${walletAddress}`
+                }).then(response => response.json()).then(data => {
+                    if (data.error) {
+                        console.error(data.error);
+                    } else {
+                        console.log(data.success);
+                    }
+                });
+
+                // Dodajemy obserwatora dla zdarzenia accountsChanged.
+                window.ethereum.on('accountsChanged', function (accounts) {
+                    // Pobierz zapisany adres portfela z ciasteczek
+                    const savedWalletAddress = getCookie('wallet_address');
+
+                    // Sprawdź, czy portfel jest w aktualnej liście kont
+                    if (savedWalletAddress && !accounts.includes(savedWalletAddress)) {
+                        console.log('Użytkownik odłączył się od aplikacji');
+                        clearCookie('wallet_address');
+                    }
+                });
+            } else {
+                console.log("No account connected");
+            }
+        } else {
+            console.log("No wallet");
+        }
+    }
+
+    function updateUIWithWallet(walletAddress) {
+        document.getElementById('connectWalletBtn1').textContent = `${walletAddress}`;
+        document.getElementById('connectWalletBtn1').classList.add('wallet-address-button');
+        document.getElementById('connectWalletBtn2').textContent = `${walletAddress}`;
+        document.getElementById('connectWalletBtn2').classList.add('wallet-address-button');
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function clearCookie(name) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+    }
+
+    window.addEventListener('DOMContentLoaded', async function () {
+        // Odczytanie zapisanego adresu portfela z plików cookie
+        const savedWalletAddress = getCookie('wallet_address');
+        if (savedWalletAddress) {
+            updateUIWithWallet(savedWalletAddress);
+        }
+
+        if (window.ethereum) {
+            const accounts = await window.ethereum.request({ method: "eth_accounts" });
+            if (accounts.length > 0) {
+                const walletAddress = accounts[0];
+
+                fetch('/check-wallet-connection/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: `address=${walletAddress}`
+                }).then(response => response.json()).then(data => {
+                    if (data.connected) {
+                        updateUIWithWallet(walletAddress);
+                    }
+                });
+            }
+        }
+    });
+</script>
+
+
+
+</body>
+
+
+</html>

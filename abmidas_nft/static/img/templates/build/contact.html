@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #020824, #1e3a5f, #020824, #020824);
+            color: #fff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            width: 250px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+
+        .social-item a {
+            color: #00c9ff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-item a:hover {
+            color: #fff;
+        }
+
+        .social-label {
+            margin-left: 10px;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        /* Neon Button Styles */
+        .btn-back {
+            background: none;
+            border: 1px solid #00c9ff;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            color: #00c9ff;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            box-shadow: 0 0 15px #00c9ff, 0 0 10px #00c9ff;
+            background-color: rgba(0, 201, 255, 0.1);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="social-container">
+        <div class="social-item">
+            <a href="https://github.com/Arbmidas" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            <span class="social-label">GitHub</span>
+        </div>
+        <div class="social-item">
+            <a href="https://t.me/+GraNL1DJIkg0ZDg0" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <span class="social-label">Telegram</span>
+        </div>
+        <div class="social-item">
+            <a href="https://twitter.com/ArbmidasToken" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <span class="social-label">Twitter</span>
+        </div>
+        <div class="social-item">
+            <a href="https://discord.com/invite/FujrRBRe" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-discord"></i>
+            </a>
+            <span class="social-label">Discord</span>
+        </div>
+        <div class="social-item">
+            <a href="https://medium.com/@arbmidas" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-medium"></i>
+            </a>
+            <span class="social-label">Medium</span>
+        </div>
+        <div class="social-item">
+            <a href="https://www.tiktok.com/@arbmidasceo" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <span class="social-label">TikTok</span>
+        </div>
+        <button class="btn-back" onclick="window.history.back();">BACK</button>
+    </div>
+</body>
+
+</html>

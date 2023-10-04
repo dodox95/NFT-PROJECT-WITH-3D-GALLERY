@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP NFT Collection</title>
+    <style>
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #111, #222, #333); /* Dark gradient background */
+            overflow: hidden; /* Hides any overflowing elements, like our sliding container at the start */
+        }
+
+        .vip-container {
+            animation: slideInFromLeft 1s forwards; /* Added animation */
+            background-color: #1f1f1f; 
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            padding: 40px 60px;
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .vip-title {
+            color: #0ff;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        .vip-text {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            padding: 10px 25px;
+            font-size: 18px;
+            color: #0ff;
+            background-color: #111;
+            border: 2px solid #0ff;
+            border-radius: 5px;
+            text-shadow: 0 0 5px #0ff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0ff;
+            color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vip-container">
+        <div class="vip-title">VIP NFT Collection</div>
+        <div class="vip-text">Coming soon!</div>
+        <button class="back-button" onclick="window.history.back();">BACK</button>
+    </div>
+</body>
+
+</html>

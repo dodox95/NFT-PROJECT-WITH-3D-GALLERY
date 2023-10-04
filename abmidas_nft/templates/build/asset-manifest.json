@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f1021bed.css",
+    "main.js": "/static/js/main.28761412.js",
+    "static/media/szopen.mp3": "/static/media/szopen.b7b46a498146759be676.mp3",
+    "index.html": "/index.html",
+    "main.f1021bed.css.map": "/static/css/main.f1021bed.css.map",
+    "main.28761412.js.map": "/static/js/main.28761412.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1021bed.css",
+    "static/js/main.28761412.js"
+  ]
+}

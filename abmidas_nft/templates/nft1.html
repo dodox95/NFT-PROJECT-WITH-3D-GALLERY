@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twoje NFT</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: linear-gradient(45deg, #020824, #1e3a5f, #020824, #020824);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #walletAddressDisplay {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .nft-item {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .nft-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nft-image {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 1rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        button {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 id="walletAddressDisplay">The wallet address: Loading...</h2>
+    <div id="nftContainer"></div>
+    <button onclick="goBack()">BACK</button>
+
+    <script>
+        const API_KEY = "9RX3PIAD7WRJNEVG88AJG574TI38J6IFAY";
+
+        function getWalletAddressFromCookies() {
+            const cookies = document.cookie.split('; ');
+            const walletAddressCookie = cookies.find(row => row.startsWith('wallet_address='));
+            return walletAddressCookie ? walletAddressCookie.split('=')[1] : null;
+        }
+
+        function displayNFTs(nfts) {
+            const container = document.getElementById('nftContainer');
+            nfts.forEach(nft => {
+                const nftDiv = document.createElement('div');
+                nftDiv.className = 'nft-item';
+
+                const nftImage = document.createElement('img');
+                nftImage.className = 'nft-image';
+                nftImage.src = nft.image;
+
+                const nftTitle = document.createElement('span');
+                nftTitle.textContent = nft.title;
+
+                nftDiv.appendChild(nftImage);
+                nftDiv.appendChild(nftTitle);
+
+                container.appendChild(nftDiv);
+            });
+        }
+
+        async function fetchNFTs(walletAddress) {
+            document.getElementById("walletAddressDisplay").textContent = "The wallet address: " + walletAddress;
+            const url = `https://api.arbitrum.io/api?module=account&action=tokennfttx&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${API_KEY}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data.message === "OK" && data.result.length > 0) {
+                const uniqueTokens = [];
+                const addedTokens = new Set();
+
+                data.result.forEach(token => {
+                    if (!addedTokens.has(token.contractAddress)) {
+                        uniqueTokens.push({
+                            title: token.tokenName,
+                            image: token.tokenSymbol
+                        });
+                        addedTokens.add(token.contractAddress);
+                    }
+                });
+
+                displayNFTs(uniqueTokens);
+            } else {
+                const container = document.getElementById('nftContainer');
+                container.innerHTML = "<p>No NFT for the wallet address specified.</p>";
+                console.error("Problem with fetching NFT data or no NFTs found for the provided address.");
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function init() {
+            const walletAddress = getWalletAddressFromCookies();
+            if (walletAddress) {
+                fetchNFTs(walletAddress);
+            } else {
+                document.getElementById("walletAddressDisplay").textContent = "Wallet address not found.";
+            }
+        }
+
+        init();
+    </script>
+
+</body>
+
+</html>
